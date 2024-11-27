@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('transport_user', function (Blueprint $table) {
             $table->foreignId('transport_id');
             $table->foreignId('user_id');
-            $table->date('day_date');
         });
     }
 

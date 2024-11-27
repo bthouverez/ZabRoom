@@ -1,12 +1,12 @@
 created:
     - database/factories/ClassroomFactory.php
     - database/factories/TransportFactory.php
-    - database/migrations/2024_11_27_074551_create_classrooms_table.php
-    - database/migrations/2024_11_27_074552_create_transports_table.php
-    - database/migrations/2024_11_27_074553_create_transport_user_table.php
+    - database/migrations/2024_11_27_082018_create_classrooms_table.php
+    - database/migrations/2024_11_27_082019_create_transports_table.php
+    - database/migrations/2024_11_27_082020_create_transport_user_table.php
     - app/Models/Classroom.php
     - app/Models/Transport.php
 models:
-    User: {  }
-    Classroom: { label: string, letter: char, relationships: { belongsTo: User } }
+    User: { name: 'string:191', email: 'string:191', email_verified_at: 'timestamp nullable', password: 'string:191', is_admin: boolean, remember_token: 'string:100 nullable' }
+    Classroom: { label: string, letter: char, user_id: 'unsigned integer', relationships: { belongsTo: User } }
     Transport: { label: string, color: string, points: integer, relationships: { belongsToMany: User } }

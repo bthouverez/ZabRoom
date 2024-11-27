@@ -7,6 +7,7 @@ use App\Models\Transport;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,6 +19,13 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create([
+            'name' => 'Bthouverez',
+            'email' => 'bthouverez@bthouverez.fr',
+            'password' => Hash::make('321654'),
+            'is_admin' => 1,
+        ]);
+
+        User::factory()->create([
             'name' => 'God',
             'email' => 'admin@example.com',
             'is_admin' => 1,
@@ -25,5 +33,16 @@ class DatabaseSeeder extends Seeder
 
         Classroom::factory(5)->create();
         Transport::factory(5)->create();
+
+        $c = new Classroom;
+        $c->label = "SIO2";
+        $c->letter = 'A';
+        $c->user_id = 1;
+        $c->save();
+
+        User::factory(5)->create([
+           'classroom_id' => $c->id,
+        ]);
+
     }
 }

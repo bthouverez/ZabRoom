@@ -22,8 +22,8 @@ class TransportFactory extends Factory
     {
         return [
             'label' => $this->faker->word(),
-            'color' => $this->faker->hexColor(),
-            'points' => $this->faker->numberBetween(1, 5),
+            'color' => $this->faker->word(),
+            'points' => $this->faker->numberBetween(-10000, 10000),
         ];
     }
 }
